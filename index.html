@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Nicest msg</title>
+</head>
+<body class="bg-fuchsia-200 overflow-hidden"> 
+    <div class="flex flex-col items-center mx-auto w-[659px] mt-28 mb-8">
+        <h1 class="text-left w-full text-6xl font-light">WRITE YOUR</h1>
+        <p class="text-center w-full text-6xl font-bold italic">NICEST NASTIEST</p>
+    </div>
+    <div class="relative">
+        <div class="bg-purple-200 flex flex-col w-[659px] items-center mx-auto  rounded-lg shadow-2xl relative">
+            <span class="absolute top-0 left-0 -ml-10 -mt-7 text-7xl">💗</span>
+            <img src="./Group 1.png" alt="" class="mt-8">
+            <input  id="user-msg" type="text" placeholder="Insert love here..." class="mt-12 w-[360px] h-[30px] p-6 bg-fuchsia-300 rounded-2xl italic shadow-md focus:outline-none placeholder-gray-700 pacity-75">
+            <button class="mt-10 bg-fuchsia-300 opacity-60 p-3 w-36 rounded-2xl shadow-md mb-8" id="generate">F*CK YOU</button>
+            <span class="absolute bottom-0 right-0 -mr-10 -mb-7 text-7xl rotate-45">🌈</span>
+        </div>
+    </div>
+    <p class="text-center text-6xl font-light tracking-widest mt-8">✨ MESSAGE ✨</p>
+    <div class="relative bg-fuchsia-200 w-[700px] h-[800px]"></div>
+    </div>
+
+    <div class="relative bg-fuchsia-200 w-[700px] z-0" id="capture">
+        <div class="bg-purple-200 flex flex-col w-[659px] items-center mx-auto  rounded-lg shadow-2xl relative">
+            <span class="absolute top-0 left-0 -ml-10 -mt-7 text-7xl">💗</span>
+            <img src="./Group 1.png" alt="" class="mt-8">
+            <p id="sent-msg" class="text-center font-light text-3xl mt-12 mb-12">  ✨💗</p>
+            <span class="absolute bottom-0 right-0 -mr-6 mb-6 text-5xl rotate-45">🌈</span>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready( function() {
+
+            $('#generate').on('click',function(){
+                var sentMsg = $('#sent-msg')
+                var msg = $('#user-msg').val()
+                sentMsg.text('💗✨ '+msg+' 💗✨')
+                const target = document.getElementById('capture')
+
+                html2canvas(target).then((canvas) => {
+                    const image = canvas.toDataURL("image/png")
+                    var link = document.createElement('a')
+
+                    link.setAttribute("href", image)
+                    link.setAttribute("download", "love-letter.png")
+                    link.click()
+                    link.remove()
+                })
+            })
+        });
+    </script>
+</body>
+</html>
+
